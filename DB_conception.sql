@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `battle` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `joueur1` smallint(6) NOT NULL DEFAULT 0,
   `joueur2` smallint(6) NOT NULL DEFAULT 0,
+  `date` datetime NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `FK1_user_battle` (`joueur1`),
   KEY `FK2_user_battle` (`joueur2`),
