@@ -20,13 +20,13 @@ USE `database_conception`;
 -- Listage de la structure de la table database_conception. battle
 CREATE TABLE IF NOT EXISTS `battle` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `joueur1` varchar(50) NOT NULL,
-  `joueur2` varchar(50) NOT NULL,
+  `joueur1` smallint(6) NOT NULL DEFAULT 0,
+  `joueur2` smallint(6) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `FK1_user_battle` (`joueur1`),
   KEY `FK2_user_battle` (`joueur2`),
-  CONSTRAINT `FK1_user_battle` FOREIGN KEY (`joueur1`) REFERENCES `user` (`pseudo`),
-  CONSTRAINT `FK2_user_battle` FOREIGN KEY (`joueur2`) REFERENCES `user` (`pseudo`)
+  CONSTRAINT `FK1_user_battle` FOREIGN KEY (`joueur1`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK2_user_battle` FOREIGN KEY (`joueur2`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- Listage des données de la table database_conception.battle : ~0 rows (environ)
@@ -54,8 +54,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `pseudo` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `Index 2` (`pseudo`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- Listage des données de la table database_conception.user : ~0 rows (environ)
